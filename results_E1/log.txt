@@ -1,0 +1,112 @@
+IPT Comprehensive Experiments — 2026-03-28 02:59:25
+PyTorch 2.8.0+cu128, CUDA 12.8
+GPUs: 2
+  [0] NVIDIA TITAN RTX (25.2 GB)
+  [1] NVIDIA TITAN RTX (25.2 GB)
+Dynamics device: cuda:0
+Self-model device: cuda:1
+
+==================================================
+  STARTUP DIAGNOSTIC
+==================================================
+  [OK] FractalTreeSystem: L=2, n=16, N=64, modules=4
+  [OK] generate_trajectory -> torch.Size([100, 4, 16])
+  [OK] traj_flat -> torch.Size([100, 64])
+  [OK] jacobian -> torch.Size([64, 64])
+  [OK] Lyapunov = -0.0064
+  [OK] Ridge R2 = 0.2688
+  [OK] OrthogonalRNN (flat comparison)
+  [OK] GRUSelfModel -> out=torch.Size([1, 5, 16]), h=torch.Size([1, 1, 16])
+
+  ALL CHECKS PASSED
+
+==================================================
+
+======================================================================
+  EXPERIMENT E1 — DISTRIBUTED PER-MODULE GRU SELF-MODELS
+======================================================================
+
+--- E1 Part A: Distributed vs Global ---
+s=42 modules:   0%|          | 0/8 [00:00<?, ?it/s]s=42 modules:  12%|█▎        | 1/8 [00:01<00:11,  1.62s/it]s=42 modules:  25%|██▌       | 2/8 [00:02<00:07,  1.29s/it]s=42 modules:  38%|███▊      | 3/8 [00:03<00:05,  1.16s/it]s=42 modules:  50%|█████     | 4/8 [00:04<00:04,  1.10s/it]s=42 modules:  62%|██████▎   | 5/8 [00:05<00:03,  1.06s/it]s=42 modules:  75%|███████▌  | 6/8 [00:06<00:02,  1.04s/it]s=42 modules:  88%|████████▊ | 7/8 [00:07<00:01,  1.03s/it]s=42 modules: 100%|██████████| 8/8 [00:08<00:00,  1.02s/it]s=42 modules: 100%|██████████| 8/8 [00:08<00:00,  1.09s/it]
+  baseline_s42: Ridge=0.9965, Distributed=0.9859, Global=0.6100
+s=43 modules:   0%|          | 0/8 [00:00<?, ?it/s]s=43 modules:  12%|█▎        | 1/8 [00:01<00:07,  1.00s/it]s=43 modules:  25%|██▌       | 2/8 [00:01<00:05,  1.01it/s]s=43 modules:  38%|███▊      | 3/8 [00:02<00:04,  1.02it/s]s=43 modules:  50%|█████     | 4/8 [00:03<00:03,  1.02it/s]s=43 modules:  62%|██████▎   | 5/8 [00:04<00:02,  1.02it/s]s=43 modules:  75%|███████▌  | 6/8 [00:05<00:01,  1.02it/s]s=43 modules:  88%|████████▊ | 7/8 [00:06<00:00,  1.02it/s]s=43 modules: 100%|██████████| 8/8 [00:07<00:00,  1.02it/s]s=43 modules: 100%|██████████| 8/8 [00:07<00:00,  1.02it/s]
+  baseline_s43: Ridge=0.9964, Distributed=0.9874, Global=0.4138
+s=44 modules:   0%|          | 0/8 [00:00<?, ?it/s]s=44 modules:  12%|█▎        | 1/8 [00:00<00:06,  1.00it/s]s=44 modules:  25%|██▌       | 2/8 [00:01<00:05,  1.02it/s]s=44 modules:  38%|███▊      | 3/8 [00:02<00:04,  1.02it/s]s=44 modules:  50%|█████     | 4/8 [00:03<00:03,  1.02it/s]s=44 modules:  62%|██████▎   | 5/8 [00:04<00:02,  1.02it/s]s=44 modules:  75%|███████▌  | 6/8 [00:05<00:01,  1.03it/s]s=44 modules:  88%|████████▊ | 7/8 [00:06<00:00,  1.03it/s]s=44 modules: 100%|██████████| 8/8 [00:07<00:00,  1.02it/s]s=44 modules: 100%|██████████| 8/8 [00:07<00:00,  1.02it/s]
+  baseline_s44: Ridge=0.9965, Distributed=0.9843, Global=0.5678
+
+--- E1 Part B: Distributed GRUs under betaG ---
+  all_biased_bG0.0000_s42: R2_biased=0.9857, R2_free=nan, R2_total=0.9857
+  all_biased_bG0.0000_s43: R2_biased=0.9835, R2_free=nan, R2_total=0.9835
+  all_biased_bG0.0000_s44: R2_biased=0.9750, R2_free=nan, R2_total=0.9750
+  all_biased_bG0.0100_s42: R2_biased=0.9806, R2_free=nan, R2_total=0.9806
+  all_biased_bG0.0100_s43: R2_biased=0.9772, R2_free=nan, R2_total=0.9772
+  all_biased_bG0.0100_s44: R2_biased=0.9806, R2_free=nan, R2_total=0.9806
+  all_biased_bG0.0500_s42: R2_biased=0.9831, R2_free=nan, R2_total=0.9831
+  all_biased_bG0.0500_s43: R2_biased=0.9777, R2_free=nan, R2_total=0.9777
+  all_biased_bG0.0500_s44: R2_biased=0.9826, R2_free=nan, R2_total=0.9826
+  all_biased_bG0.1000_s42: R2_biased=0.9766, R2_free=nan, R2_total=0.9766
+  all_biased_bG0.1000_s43: R2_biased=0.9749, R2_free=nan, R2_total=0.9749
+  all_biased_bG0.1000_s44: R2_biased=0.9713, R2_free=nan, R2_total=0.9713
+  all_biased_bG0.5000_s42: R2_biased=0.8612, R2_free=nan, R2_total=0.8612
+  all_biased_bG0.5000_s43: R2_biased=0.8599, R2_free=nan, R2_total=0.8599
+  all_biased_bG0.5000_s44: R2_biased=0.8565, R2_free=nan, R2_total=0.8565
+  all_biased_bG1.0000_s42: R2_biased=0.7003, R2_free=nan, R2_total=0.7003
+  all_biased_bG1.0000_s43: R2_biased=0.6703, R2_free=nan, R2_total=0.6703
+  all_biased_bG1.0000_s44: R2_biased=0.7005, R2_free=nan, R2_total=0.7005
+  all_biased_bG5.0000_s42: R2_biased=0.1792, R2_free=nan, R2_total=0.1792
+  all_biased_bG5.0000_s43: R2_biased=0.1447, R2_free=nan, R2_total=0.1447
+  all_biased_bG5.0000_s44: R2_biased=0.1735, R2_free=nan, R2_total=0.1735
+  half_biased_bG0.0000_s42: R2_biased=0.9822, R2_free=0.9870, R2_total=0.9846
+  half_biased_bG0.0000_s43: R2_biased=0.9862, R2_free=0.9548, R2_total=0.9705
+  half_biased_bG0.0000_s44: R2_biased=0.9867, R2_free=0.9701, R2_total=0.9784
+  half_biased_bG0.0100_s42: R2_biased=0.9807, R2_free=0.9877, R2_total=0.9842
+  half_biased_bG0.0100_s43: R2_biased=0.9862, R2_free=0.9623, R2_total=0.9742
+  half_biased_bG0.0100_s44: R2_biased=0.9849, R2_free=0.9843, R2_total=0.9846
+  half_biased_bG0.0500_s42: R2_biased=0.9812, R2_free=0.9886, R2_total=0.9849
+  half_biased_bG0.0500_s43: R2_biased=0.9786, R2_free=0.9818, R2_total=0.9802
+  half_biased_bG0.0500_s44: R2_biased=0.9836, R2_free=0.9434, R2_total=0.9635
+  half_biased_bG0.1000_s42: R2_biased=0.9725, R2_free=0.9880, R2_total=0.9803
+  half_biased_bG0.1000_s43: R2_biased=0.9763, R2_free=0.9692, R2_total=0.9728
+  half_biased_bG0.1000_s44: R2_biased=0.9799, R2_free=0.9844, R2_total=0.9821
+  half_biased_bG0.5000_s42: R2_biased=0.8583, R2_free=0.9882, R2_total=0.9232
+  half_biased_bG0.5000_s43: R2_biased=0.8600, R2_free=0.9880, R2_total=0.9240
+  half_biased_bG0.5000_s44: R2_biased=0.8585, R2_free=0.9824, R2_total=0.9205
+  half_biased_bG1.0000_s42: R2_biased=0.7002, R2_free=0.9887, R2_total=0.8444
+  half_biased_bG1.0000_s43: R2_biased=0.6939, R2_free=0.8452, R2_total=0.7695
+  half_biased_bG1.0000_s44: R2_biased=0.7013, R2_free=0.9821, R2_total=0.8417
+  half_biased_bG5.0000_s42: R2_biased=0.1794, R2_free=0.9391, R2_total=0.5592
+  half_biased_bG5.0000_s43: R2_biased=0.1785, R2_free=0.9807, R2_total=0.5796
+  half_biased_bG5.0000_s44: R2_biased=0.1790, R2_free=0.9838, R2_total=0.5814
+  one_biased_bG0.0000_s42: R2_biased=0.9774, R2_free=0.9868, R2_total=0.9856
+  one_biased_bG0.0000_s43: R2_biased=0.9882, R2_free=0.9786, R2_total=0.9798
+  one_biased_bG0.0000_s44: R2_biased=0.9901, R2_free=0.9835, R2_total=0.9843
+  one_biased_bG0.0100_s42: R2_biased=0.9757, R2_free=0.9854, R2_total=0.9842
+  one_biased_bG0.0100_s43: R2_biased=0.9764, R2_free=0.9537, R2_total=0.9565
+  one_biased_bG0.0100_s44: R2_biased=0.9902, R2_free=0.9839, R2_total=0.9846
+  one_biased_bG0.0500_s42: R2_biased=0.9788, R2_free=0.9874, R2_total=0.9863
+  one_biased_bG0.0500_s43: R2_biased=0.9756, R2_free=0.9290, R2_total=0.9348
+  one_biased_bG0.0500_s44: R2_biased=0.9868, R2_free=0.9866, R2_total=0.9866
+  one_biased_bG0.1000_s42: R2_biased=0.9726, R2_free=0.9865, R2_total=0.9848
+  one_biased_bG0.1000_s43: R2_biased=0.9735, R2_free=0.8890, R2_total=0.8996
+  one_biased_bG0.1000_s44: R2_biased=0.9808, R2_free=0.9691, R2_total=0.9706
+  one_biased_bG0.5000_s42: R2_biased=0.8569, R2_free=0.9857, R2_total=0.9696
+  one_biased_bG0.5000_s43: R2_biased=0.8565, R2_free=0.9338, R2_total=0.9241
+  one_biased_bG0.5000_s44: R2_biased=0.8606, R2_free=0.9855, R2_total=0.9699
+  one_biased_bG1.0000_s42: R2_biased=0.6967, R2_free=0.9869, R2_total=0.9506
+  one_biased_bG1.0000_s43: R2_biased=0.6977, R2_free=0.9827, R2_total=0.9471
+  one_biased_bG1.0000_s44: R2_biased=0.7017, R2_free=0.9831, R2_total=0.9480
+  one_biased_bG5.0000_s42: R2_biased=0.1804, R2_free=0.9858, R2_total=0.8851
+  one_biased_bG5.0000_s43: R2_biased=0.1717, R2_free=0.9847, R2_total=0.8831
+  one_biased_bG5.0000_s44: R2_biased=0.1821, R2_free=0.9843, R2_total=0.8840
+
+[E1] Analyzing...
+
+  === Baseline Comparison ===
+  s=42: Ridge=0.9965, Distributed=0.9859, Global=0.6100
+  s=43: Ridge=0.9964, Distributed=0.9874, Global=0.4138
+  s=44: Ridge=0.9965, Distributed=0.9843, Global=0.5678
+[E1] COMPLETE
+
+
+Total runtime: 2.91 hours
+ALL DONE.

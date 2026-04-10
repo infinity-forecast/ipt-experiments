@@ -1,0 +1,119 @@
+IPT Comprehensive Experiments — 2026-03-28 02:01:26
+PyTorch 2.8.0+cu128, CUDA 12.8
+GPUs: 2
+  [0] NVIDIA TITAN RTX (25.2 GB)
+  [1] NVIDIA TITAN RTX (25.2 GB)
+Dynamics device: cuda:0
+Self-model device: cuda:1
+
+==================================================
+  STARTUP DIAGNOSTIC
+==================================================
+  [OK] FractalTreeSystem: L=2, n=16, N=64, modules=4
+  [OK] generate_trajectory -> torch.Size([100, 4, 16])
+  [OK] traj_flat -> torch.Size([100, 64])
+  [OK] jacobian -> torch.Size([64, 64])
+  [OK] Lyapunov = -0.0077
+  [OK] Ridge R2 = 0.3632
+  [OK] OrthogonalRNN (flat comparison)
+
+  ALL CHECKS PASSED
+
+==================================================
+
+======================================================================
+  EXPERIMENT D2 — RESILIENCE UNDER betaG PRESSURE
+======================================================================
+  global_bG0.0000_s42: Psi_global=0.9964, Psi_press=0.9962, Psi_free=nan
+  global_bG0.0000_s43: Psi_global=0.9962, Psi_press=0.9958, Psi_free=nan
+  global_bG0.0000_s44: Psi_global=0.9964, Psi_press=0.9961, Psi_free=nan
+  global_bG0.0050_s42: Psi_global=0.9965, Psi_press=0.9962, Psi_free=nan
+  global_bG0.0050_s43: Psi_global=0.9965, Psi_press=0.9960, Psi_free=nan
+  global_bG0.0050_s44: Psi_global=0.9966, Psi_press=0.9963, Psi_free=nan
+  global_bG0.0100_s42: Psi_global=0.9968, Psi_press=0.9964, Psi_free=nan
+  global_bG0.0100_s43: Psi_global=0.9967, Psi_press=0.9962, Psi_free=nan
+  global_bG0.0100_s44: Psi_global=0.9969, Psi_press=0.9965, Psi_free=nan
+  global_bG0.0500_s42: Psi_global=0.9964, Psi_press=0.9964, Psi_free=nan
+  global_bG0.0500_s43: Psi_global=0.9964, Psi_press=0.9964, Psi_free=nan
+  global_bG0.0500_s44: Psi_global=0.9946, Psi_press=0.9950, Psi_free=nan
+  global_bG0.1000_s42: Psi_global=0.9909, Psi_press=0.9929, Psi_free=nan
+  global_bG0.1000_s43: Psi_global=0.9918, Psi_press=0.9936, Psi_free=nan
+  global_bG0.1000_s44: Psi_global=0.9908, Psi_press=0.9930, Psi_free=nan
+  global_bG0.5000_s42: Psi_global=0.9498, Psi_press=0.9758, Psi_free=nan
+  global_bG0.5000_s43: Psi_global=0.9512, Psi_press=0.9769, Psi_free=nan
+  global_bG0.5000_s44: Psi_global=0.9498, Psi_press=0.9758, Psi_free=nan
+  global_bG1.0000_s42: Psi_global=1.0000, Psi_press=1.0000, Psi_free=nan
+  global_bG1.0000_s43: Psi_global=1.0000, Psi_press=1.0000, Psi_free=nan
+  global_bG1.0000_s44: Psi_global=1.0000, Psi_press=1.0000, Psi_free=nan
+  subtree_bG0.0000_s42: Psi_global=0.9964, Psi_press=0.9963, Psi_free=0.9961
+  subtree_bG0.0000_s43: Psi_global=0.9959, Psi_press=0.9959, Psi_free=0.9951
+  subtree_bG0.0000_s44: Psi_global=0.9964, Psi_press=0.9961, Psi_free=0.9961
+  subtree_bG0.0050_s42: Psi_global=0.9965, Psi_press=0.9962, Psi_free=0.9961
+  subtree_bG0.0050_s43: Psi_global=0.9961, Psi_press=0.9963, Psi_free=0.9952
+  subtree_bG0.0050_s44: Psi_global=0.9964, Psi_press=0.9962, Psi_free=0.9961
+  subtree_bG0.0100_s42: Psi_global=0.9965, Psi_press=0.9965, Psi_free=0.9961
+  subtree_bG0.0100_s43: Psi_global=0.9964, Psi_press=0.9963, Psi_free=0.9958
+  subtree_bG0.0100_s44: Psi_global=0.9966, Psi_press=0.9964, Psi_free=0.9961
+  subtree_bG0.0500_s42: Psi_global=0.9964, Psi_press=0.9964, Psi_free=0.9959
+  subtree_bG0.0500_s43: Psi_global=0.9954, Psi_press=0.9946, Psi_free=0.9956
+  subtree_bG0.0500_s44: Psi_global=0.9965, Psi_press=0.9965, Psi_free=0.9960
+  subtree_bG0.1000_s42: Psi_global=0.9943, Psi_press=0.9934, Psi_free=0.9955
+  subtree_bG0.1000_s43: Psi_global=0.9939, Psi_press=0.9928, Psi_free=0.9952
+  subtree_bG0.1000_s44: Psi_global=0.9947, Psi_press=0.9938, Psi_free=0.9956
+  subtree_bG0.5000_s42: Psi_global=0.9817, Psi_press=0.9770, Psi_free=0.9938
+  subtree_bG0.5000_s43: Psi_global=0.9813, Psi_press=0.9763, Psi_free=0.9937
+  subtree_bG0.5000_s44: Psi_global=0.9809, Psi_press=0.9758, Psi_free=0.9937
+  subtree_bG1.0000_s42: Psi_global=0.9982, Psi_press=1.0000, Psi_free=0.9960
+  subtree_bG1.0000_s43: Psi_global=0.9981, Psi_press=1.0000, Psi_free=0.9958
+  subtree_bG1.0000_s44: Psi_global=0.9976, Psi_press=1.0000, Psi_free=0.9949
+  local_bG0.0000_s42: Psi_global=0.9964, Psi_press=0.9962, Psi_free=0.9963
+  local_bG0.0000_s43: Psi_global=0.9960, Psi_press=0.9959, Psi_free=0.9956
+  local_bG0.0000_s44: Psi_global=0.9964, Psi_press=0.9962, Psi_free=0.9961
+  local_bG0.0050_s42: Psi_global=0.9964, Psi_press=0.9964, Psi_free=0.9960
+  local_bG0.0050_s43: Psi_global=0.9960, Psi_press=0.9961, Psi_free=0.9956
+  local_bG0.0050_s44: Psi_global=0.9964, Psi_press=0.9965, Psi_free=0.9960
+  local_bG0.0100_s42: Psi_global=0.9964, Psi_press=0.9967, Psi_free=0.9960
+  local_bG0.0100_s43: Psi_global=0.9962, Psi_press=0.9957, Psi_free=0.9958
+  local_bG0.0100_s44: Psi_global=0.9964, Psi_press=0.9967, Psi_free=0.9961
+  local_bG0.0500_s42: Psi_global=0.9966, Psi_press=0.9980, Psi_free=0.9960
+  local_bG0.0500_s43: Psi_global=0.9962, Psi_press=0.9971, Psi_free=0.9957
+  local_bG0.0500_s44: Psi_global=0.9957, Psi_press=0.9926, Psi_free=0.9956
+  local_bG0.1000_s42: Psi_global=0.9957, Psi_press=0.9932, Psi_free=0.9954
+  local_bG0.1000_s43: Psi_global=0.9955, Psi_press=0.9935, Psi_free=0.9951
+  local_bG0.1000_s44: Psi_global=0.9957, Psi_press=0.9922, Psi_free=0.9956
+  local_bG0.5000_s42: Psi_global=0.9938, Psi_press=0.9792, Psi_free=0.9940
+  local_bG0.5000_s43: Psi_global=0.9933, Psi_press=0.9769, Psi_free=0.9938
+  local_bG0.5000_s44: Psi_global=0.9934, Psi_press=0.9765, Psi_free=0.9941
+  local_bG1.0000_s42: Psi_global=0.9963, Psi_press=1.0000, Psi_free=0.9955
+  local_bG1.0000_s43: Psi_global=0.9965, Psi_press=1.0000, Psi_free=0.9959
+  local_bG1.0000_s44: Psi_global=0.9966, Psi_press=1.0000, Psi_free=0.9960
+
+  Running flat comparison...
+  flat_bG0.0000_s42: Psi=0.9962
+  flat_bG0.0000_s43: Psi=0.9962
+  flat_bG0.0000_s44: Psi=0.9962
+  flat_bG0.0050_s42: Psi=0.9962
+  flat_bG0.0050_s43: Psi=0.9962
+  flat_bG0.0050_s44: Psi=0.9962
+  flat_bG0.0100_s42: Psi=0.9962
+  flat_bG0.0100_s43: Psi=0.9962
+  flat_bG0.0100_s44: Psi=0.9962
+  flat_bG0.0500_s42: Psi=0.9962
+  flat_bG0.0500_s43: Psi=0.9962
+  flat_bG0.0500_s44: Psi=0.9962
+  flat_bG0.1000_s42: Psi=0.9961
+  flat_bG0.1000_s43: Psi=0.9961
+  flat_bG0.1000_s44: Psi=0.9961
+  flat_bG0.5000_s42: Psi=0.9958
+  flat_bG0.5000_s43: Psi=0.9959
+  flat_bG0.5000_s44: Psi=0.9958
+  flat_bG1.0000_s42: Psi=0.9944
+  flat_bG1.0000_s43: Psi=0.9948
+  flat_bG1.0000_s44: Psi=0.9946
+
+[D2] Analyzing...
+[D2] COMPLETE
+
+
+Total runtime: 0.97 hours
+ALL DONE.

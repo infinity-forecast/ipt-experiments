@@ -1,0 +1,38 @@
+IPT Comprehensive Experiments — 2026-03-27 19:35:53
+PyTorch 2.8.0+cu128, CUDA 12.8
+GPUs: 1
+  [0] NVIDIA TITAN RTX (25.2 GB)
+Dynamics device: cuda:0
+Self-model device: cuda:0
+
+==================================================
+  STARTUP DIAGNOSTIC
+==================================================
+  [OK] FractalTreeSystem: L=2, n=16, N=64, modules=4
+  [OK] generate_trajectory -> torch.Size([100, 4, 16])
+  [OK] traj_flat -> torch.Size([100, 64])
+  [OK] jacobian -> torch.Size([64, 64])
+  [OK] Lyapunov = -0.0070
+  [OK] Ridge R2 = 0.4488
+  [OK] OrthogonalRNN (flat comparison)
+
+  ALL CHECKS PASSED
+
+==================================================
+
+======================================================================
+  EXPERIMENT F2 — INFORMATION FLOW TOPOLOGY
+======================================================================
+  lam0.850_s42: diag_mean=0.6774, off_diag_mean=0.0000
+  lam0.850_s43: diag_mean=0.6785, off_diag_mean=0.0000
+  lam1.043_s42: diag_mean=0.9962, off_diag_mean=0.2176
+  lam1.043_s43: diag_mean=0.9956, off_diag_mean=0.1165
+  lam1.200_s42: diag_mean=0.9831, off_diag_mean=0.0013
+  lam1.200_s43: diag_mean=0.9831, off_diag_mean=0.0007
+
+[F2] Generating figures...
+[F2] COMPLETE
+
+
+Total runtime: 0.11 hours
+ALL DONE.

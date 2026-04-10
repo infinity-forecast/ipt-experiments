@@ -1,0 +1,32 @@
+IPT Comprehensive Experiments — 2026-03-28 05:56:47
+PyTorch 2.8.0+cu128, CUDA 12.8
+GPUs: 2
+  [0] NVIDIA TITAN RTX (25.2 GB)
+  [1] NVIDIA TITAN RTX (25.2 GB)
+Dynamics device: cuda:0
+Self-model device: cuda:1
+
+==================================================
+  STARTUP DIAGNOSTIC
+==================================================
+  [OK] FractalTreeSystem: L=2, n=16, N=64, modules=4
+  [OK] generate_trajectory -> torch.Size([100, 4, 16])
+  [OK] traj_flat -> torch.Size([100, 64])
+  [OK] jacobian -> torch.Size([64, 64])
+  [OK] Lyapunov = -0.0049
+  [OK] Ridge R2 = 0.2354
+  [OK] OrthogonalRNN (flat comparison)
+
+  ALL CHECKS PASSED
+
+==================================================
+
+======================================================================
+  EXPERIMENT F1 — ALIGNMENT COMPARISON MATRIX
+======================================================================
+  Figure: /mnt/projects1/IPT/final_experiments_v2/results_F1/alignment_matrix.png
+[F1] COMPLETE
+
+
+Total runtime: 0.00 hours
+ALL DONE.

@@ -1,0 +1,45 @@
+IPT codebase: /home/infinity-forecast/projects1/IPT/Calude_IPT/3_IPT_Memory/ipt_experiment
+Available modules: ['improved_analysis.py', 'comprehensive_analysis.py', 'config.py', 'plots.py', 'metrics.py', 'mine_omega.py', 'experiment.py', 'self_model.py', 'dynamics.py']
+Imported Lyapunov function: dynamics.compute_lyapunov_exponent
+Imported: self_model.GRUSelfModel
+IPT Final Experiments v2 — 2026-03-25 05:20:36
+PyTorch 2.8.0+cu128, CUDA 12.8
+GPUs: 1
+  [0] NVIDIA TITAN RTX (25.2 GB)
+Dynamics device: cuda:0
+Self-model device: cuda:0
+
+==================================================
+  STARTUP DIAGNOSTIC
+==================================================
+  [OK] OrthogonalRNN created (N=32)
+  [OK] generate_trajectory -> shape torch.Size([100, 32])
+  [OK] jacobian -> shape torch.Size([32, 32])
+  [OK] eigenvalues: spectral radius=0.9938, theta=143.9 deg
+  [OK] compute_lyapunov_exponent -> -0.0073
+  [OK] compute_lyapunov_on_trajectory -> -0.0072
+  [OK] Ridge R2: lam=0.90 -> 0.0697, lam=1.04 -> 0.9435
+  [OK] GRUSelfModel created via: GRUSelfModel(N, hidden_factor=, n_layers=)
+  [OK] forward -> (preds: torch.Size([2, 10, 32]), hidden: torch.Size([1, 2, 32]))
+  [OK] GRU layer attribute: .gru
+  [OK] hidden_dim = 32
+
+  ALL CHECKS PASSED — starting experiments
+
+==================================================
+
+======================================================================
+  EXPERIMENT B2 — HOPF ANGLE vs GRU TRAINING
+======================================================================
+
+  seed=42: 6 points remaining
+    theta_sys=15.72 deg, rho_sys=1.0041, Psi_ridge=0.9964, Lyap=0.0001
+  seed=42:   0%|          | 0/7 [00:00<?, ?it/s]  seed=42:  29%|██▊       | 2/7 [00:03<00:09,  1.95s/it]  seed=42:  43%|████▎     | 3/7 [00:14<00:21,  5.47s/it]  seed=42:  57%|█████▋    | 4/7 [00:34<00:32, 10.81s/it]  seed=42:  71%|███████▏  | 5/7 [02:08<01:19, 39.78s/it]  seed=42:  71%|███████▏  | 5/7 [02:08<00:51, 25.67s/it]
+Traceback (most recent call last):
+  File "/mnt/projects1/IPT/final_experiments_v2/ipt_final_v2.py", line 1513, in <module>
+    main()
+  File "/mnt/projects1/IPT/final_experiments_v2/ipt_final_v2.py", line 1503, in main
+    run_exp_B2()
+  File "/mnt/projects1/IPT/final_experiments_v2/ipt_final_v2.py", line 617, in run_exp_B2
+    targets = torch.stack(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.88 GiB. GPU 0 has a total capacity of 23.46 GiB of which 2.50 GiB is free. Process 32313 has 188.00 MiB memory in use. Including non-PyTorch memory, this process has 20.77 GiB memory in use. Of the allocated memory 15.40 GiB is allocated by PyTorch, and 5.16 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

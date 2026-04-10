@@ -1,0 +1,399 @@
+% ============================================================
+%  SECTION 3.3 — CORRECTED AND IMPROVED VERSION
+%  Representational Ethical Space & Ethical Effective Hyper-Volume
+%  Author: M. Azzano — revised with structural corrections
+% ============================================================
+
+\subsection{The Representational Ethical Space and the Ethical Effective Hyper-Volume}
+\label{sec:rep-ethical-space}
+
+Let $\Omega$ denote the total phase space of the world-model.  
+An agent~$a$ at time~$t$ maintains an \textbf{internal representational subspace}
+\begin{equation}
+    \Omega_a(t) \subseteq \Omega,
+\end{equation}
+called the \textbf{representational ethical space} of the agent.
+
+The space $\Omega_a(t)$ is characterised by:
+\begin{itemize}
+    \item \emph{Dimensionality}\; $d_a(t)=\dim\bigl(\Omega_a(t)\bigr)$\,;
+    \item \emph{Riemannian volume}\; $V_a(t)=\int_{\Omega_a(t)}\!\sqrt{\det g_{ij}(q)}\;d^{\,n}q$\,,
+          where $g_{ij}$ is the Fisher--Rao metric induced by the agent's internal probabilistic model;
+    \item \emph{Temporal depth}\; $\tau_a(t)$, the horizon over which the agent can propagate
+          consequential predictions (defined precisely below).
+\end{itemize}
+
+\subsubsection{Characteristic prediction time}
+\label{sec:tau-char}
+
+For each point $q\in\Omega_a$, define the \textbf{regularised mutual information}
+\begin{equation}
+    I_\varepsilon\bigl(\mathbf{x}(t);\,\mathbf{x}(t+\tau)\,\big|\,q\bigr)
+    \;=\;
+    I\!\left(\mathbf{x}^{(\varepsilon)}(t);\,\mathbf{x}^{(\varepsilon)}(t+\tau)\,\Big|\,q\right),
+\end{equation}
+where $\mathbf{x}^{(\varepsilon)}$ is the state coarse-grained at resolution~$\varepsilon$
+(e.g.\ $\varepsilon$-binning or Gaussian convolution with bandwidth~$\varepsilon$).
+This regularisation ensures that $I_\varepsilon$ is finite and differentiable at $\tau=0$.
+
+The \textbf{characteristic prediction time} at~$q$ is then
+\begin{equation}
+\label{eq:tau-char}
+    \tau_{\mathrm{char}}(q)
+    \;=\;
+    -\left[\frac{d}{d\tau}\log I_\varepsilon
+       \bigl(\mathbf{x}(t);\,\mathbf{x}(t+\tau)\,\big|\,q\bigr)
+    \right]^{-1}_{\!\tau=0}\,.
+\end{equation}
+Physical requirement: $\tau_{\mathrm{char}}(q)>0$, which holds whenever the
+agent's internal model has strictly decaying predictability
+(guaranteed for ergodic Markov models; cf.\ the data-processing inequality).
+
+\begin{remark}[Interpretation]
+$\tau_{\mathrm{char}}(q)$ is the $e$-folding time of predictive mutual information
+at configuration~$q$.  Points where the agent can forecast far into the
+future ($\tau_{\mathrm{char}}$ large) contribute more to ethical capacity;
+points of rapid decoherence contribute less.
+\end{remark}
+
+\subsubsection{Ethical effective hyper-volume}
+\label{sec:phi}
+
+\begin{definition}[Ethical effective hyper-volume]
+\begin{equation}
+\label{eq:phi}
+\boxed{\;
+    \Phi_a(t)
+    \;=\;
+    \int_{\Omega_a(t)}\!
+        \sqrt{\det g_{ij}(q)}\;\tau_{\mathrm{char}}(q)\;d^{\,n}q\,.
+\;}
+\end{equation}
+\end{definition}
+
+\begin{remark}[Derivation from the temporal weight kernel]
+The definition~\eqref{eq:phi} arises from integrating the exponential
+temporal kernel $\rho(\tau;q)=\exp\!\bigl(-\tau/\tau_{\mathrm{char}}(q)\bigr)$
+over the full temporal axis:
+\[
+    \Phi_a(t)
+    \;=\;
+    \int_{\Omega_a(t)}\!\sqrt{\det g_{ij}(q)}
+    \left[\int_0^{\infty}\!\exp\!\Bigl(-\frac{\tau}{\tau_{\mathrm{char}}(q)}\Bigr)d\tau\right]
+    d^{\,n}q
+    \;=\;
+    \int_{\Omega_a(t)}\!\sqrt{\det g_{ij}(q)}\;\tau_{\mathrm{char}}(q)\;d^{\,n}q\,.
+\]
+The temporal dimension is thus \emph{analytically integrated out},
+leaving a Riemannian volume weighted by local predictive horizon.
+\end{remark}
+
+
+% ============================================================
+\subsubsection{Coupling to the Ethical Lagrangian}
+\label{sec:coupling}
+
+The growth rate of integrated consciousness information satisfies the
+\textbf{operative capacity constraint}
+\begin{equation}
+\label{eq:capacity-chain}
+    \dot{I}_c(t)
+    \;\leq\;
+    f\!\bigl(\Phi_a^{(\mathrm{used})}(t)\bigr)
+    \;\leq\;
+    f\!\bigl(\Phi_a(t)\bigr),
+\end{equation}
+where $\Phi_a^{(\mathrm{used})}(t)\leq\Phi_a(t)$ is the ethical hyper-volume
+that the agent \emph{actually deploys} in the decision at time~$t$.
+The first inequality encodes the fact that an agent can integrate
+information only through the representational volume it actively
+employs; the second follows from monotonicity of~$f$.
+
+\paragraph{Why the constraint must involve $\Phi_a^{(\mathrm{used})}$, not $\Phi_a$.}
+The total hyper-volume $\Phi_a$ measures \emph{capacity};
+the operative bound on $\dot{I}_c$ must reflect \emph{actual deployment}.
+A library one owns but never opens does not improve one's decisions.
+This distinction is the formal root of the concept of ethical negligence
+(Section~\ref{sec:responsibility}).
+
+\subsubsection{Emergent form of the bounding function $f(\Phi)$}
+\label{sec:f-derivation}
+
+Let $\hat{\mathcal{F}}$ be the Fisher information operator on the
+tangent bundle $T\Omega_a$, with eigenvalues $\{\lambda_k\}_{k=1}^{d_a}$
+ordered decreasingly.  Define the \textbf{total Fisher capacity}
+\begin{equation}
+    \Lambda_a(t)=\operatorname{Tr}\hat{\mathcal{F}}
+    =\sum_{k=1}^{d_a(t)}\lambda_k(t),
+\end{equation}
+and the \textbf{dominant eigenvalue} $\lambda_{\max}(t)=\max_k\lambda_k(t)$.
+
+\begin{proposition}[Channel-capacity bound]
+\label{prop:f-form}
+The bounding function has the saturating form
+\begin{equation}
+\label{eq:f-form}
+\boxed{\;
+    f(\Phi)=\alpha\,\log\!\bigl(1+\beta\,\Phi\bigr),
+    \qquad
+    \alpha=\frac{\Lambda_a}{2\pi},
+    \qquad
+    \beta=\frac{\lambda_{\max}}{\Lambda_a}\,.
+\;}
+\end{equation}
+Both constants are determined solely by the Fisher spectrum of the
+agent's internal model; no external hyperparameters are introduced.
+\end{proposition}
+
+\begin{proof}
+The agent's internal model defines a communication channel between the
+world state and the internal representation.  Each eigenmode~$k$ of
+$\hat{\mathcal{F}}$ acts as an independent Gaussian sub-channel whose
+signal-to-noise ratio is proportional to $\lambda_k\,\Phi_k$, where
+$\Phi_k$ is the hyper-volume projected onto the $k$-th eigenmode.
+
+By the continuous-time Gaussian channel capacity theorem
+\cite{Shannon1948,CoverThomas2006}, the capacity per unit time of a
+single mode with spectral density $\lambda_k$ and effective power
+$\Phi_k$ is
+\[
+    C_k = \frac{1}{2}\log(1+\lambda_k\,\Phi_k)\,.
+\]
+The aggregate capacity, summing over modes and applying the water-filling
+bound with uniform volume allocation $\Phi_k\approx\Phi/d_a$, yields
+\[
+    C_{\mathrm{tot}}
+    \;\leq\;
+    \sum_{k=1}^{d_a}\frac{1}{2}\log\!\Bigl(1+\frac{\lambda_k}{d_a}\,\Phi\Bigr)
+    \;\leq\;
+    \frac{d_a}{2}\,\log\!\Bigl(1+\frac{\lambda_{\max}}{d_a}\,\Phi\Bigr),
+\]
+where the last inequality replaces each $\lambda_k$ by $\lambda_{\max}$.
+Rewriting $d_a/2 = \Lambda_a/(2\bar\lambda)$ where
+$\bar\lambda=\Lambda_a/d_a$ is the mean eigenvalue, and absorbing
+the conversion to a continuous-time rate (which introduces the
+$2\pi$ normalisation from the spectral density of the Nyquist
+bandwidth), one obtains
+\[
+    \dot{I}_c
+    \;\leq\;
+    \frac{\Lambda_a}{2\pi}\,\log\!\Bigl(1+\frac{\lambda_{\max}}{\Lambda_a}\,\Phi\Bigr)
+    \;=\;
+    \alpha\,\log(1+\beta\,\Phi).
+    \qedhere
+\]
+\end{proof}
+
+\begin{remark}[Properties of $f$]
+$f$ is strictly increasing, strictly concave, and $f(0)=0$.
+These properties are essential for Theorem~\ref{thm:lyapunov}.
+The ratio $\beta=\lambda_{\max}/\Lambda_a\in(0,1]$ measures
+spectral concentration: $\beta=1$ for a single dominant mode,
+$\beta\to 0$ for a flat spectrum.
+\end{remark}
+
+Substituting into the EECF Lagrangian:
+\begin{equation}
+\label{eq:Leth-constrained}
+    \mathcal{L}_{\mathrm{eth}}
+    = \dot{I}_c - \dot{S}_{\mathrm{ent}}
+    \quad\text{subject to}\quad
+    \dot{I}_c
+    \leq \frac{\Lambda_a}{2\pi}
+         \log\!\Bigl(1+\frac{\lambda_{\max}}{\Lambda_a}\,\Phi_a^{(\mathrm{used})}\Bigr).
+\end{equation}
+
+
+% ============================================================
+\subsubsection{Ethical Responsibility as Unused Representational Capacity}
+\label{sec:responsibility}
+
+\begin{definition}[Ethical negligence]
+\begin{equation}
+\label{eq:Ra}
+    R_a(t)
+    \;=\;
+    \Phi_a(t)-\Phi_a^{(\mathrm{used})}(t)
+    \;\geq 0.
+\end{equation}
+$R_a$ measures the discrepancy between the map the agent \emph{could}
+deploy and the map it \emph{chose} to deploy.  An agent with $R_a>0$
+is formally \textbf{ethically negligent}: it possesses representational
+capacity that, if deployed, would raise the ceiling on $\dot{I}_c$
+and hence on $\mathcal{L}_{\mathrm{eth}}$.
+\end{definition}
+
+
+% ============================================================
+\subsubsection{Ethical Convergence: $R_a$ as a Lyapunov-like Functional}
+\label{sec:lyapunov}
+
+\begin{assumption}[Gradient-following optimiser]
+\label{ass:gradient}
+The agent updates its deployed volume $\Phi_a^{(\mathrm{used})}$ by
+(approximate) gradient ascent on $\mathcal{L}_{\mathrm{eth}}$ with
+respect to its internal allocation, with an effective learning rate
+$\gamma>0$.
+\end{assumption}
+
+\begin{assumption}[Non-degenerative learning]
+\label{ass:nondeg}
+$\dot{\Phi}_a(t)\geq 0$: the agent's total representational capacity
+does not contract.
+\end{assumption}
+
+\begin{remark}
+Assumption~\ref{ass:nondeg} can be violated (neurodegeneration,
+catastrophic forgetting, externally imposed information destruction).
+The case $\dot{\Phi}_a<0$ is treated separately in
+Corollary~\ref{cor:censorship}.
+\end{remark}
+
+\begin{theorem}[Lyapunov stability of ethical convergence]
+\label{thm:lyapunov}
+Under Assumptions~\ref{ass:gradient}--\ref{ass:nondeg}, $R_a(t)$ is
+a Lyapunov-like functional:
+\begin{equation}
+\label{eq:lyapunov}
+    \frac{d}{dt}R_a(t)\;\leq\; 0
+\end{equation}
+along system trajectories, with equality if and only if
+$\Phi_a^{(\mathrm{used})}(t)=\Phi_a(t)$.
+Moreover, $R_a(t)\to 0$ asymptotically.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1 (Gradient pressure on deployed volume).}
+Since the operative constraint is
+$\dot{I}_c\leq f\bigl(\Phi_a^{(\mathrm{used})}\bigr)$,
+the Lagrangian $\mathcal{L}_{\mathrm{eth}}$ is maximised when
+$\Phi_a^{(\mathrm{used})}$ is as large as possible (because $f$ is
+strictly increasing).  Under Assumption~\ref{ass:gradient}, the
+deployed volume evolves as
+\begin{equation}
+\label{eq:phi-used-dynamics}
+    \dot{\Phi}_a^{(\mathrm{used})}
+    \;=\;
+    \dot{\Phi}_a
+    \;+\;
+    \gamma\,f'\!\bigl(\Phi_a^{(\mathrm{used})}\bigr)\,
+    \bigl(\Phi_a - \Phi_a^{(\mathrm{used})}\bigr),
+\end{equation}
+where the first term reflects passive growth (the used volume inherits
+the expansion of the total space) and the second term reflects
+active optimisation pressure pushing $\Phi_a^{(\mathrm{used})}$
+toward $\Phi_a$.  The factor $f'(\Phi_a^{(\mathrm{used})})>0$ arises
+as the marginal return on deploying additional representational volume.
+
+\textbf{Step 2 (Lyapunov inequality).}
+Differentiate $R_a=\Phi_a-\Phi_a^{(\mathrm{used})}$:
+\begin{equation}
+    \dot{R}_a
+    = \dot{\Phi}_a - \dot{\Phi}_a^{(\mathrm{used})}
+    = -\gamma\,f'\!\bigl(\Phi_a^{(\mathrm{used})}\bigr)\,R_a\,.
+\end{equation}
+Define
+\begin{equation}
+    \kappa(t)
+    \;=\;
+    \gamma\,f'\!\bigl(\Phi_a^{(\mathrm{used})}(t)\bigr)
+    \;=\;
+    \gamma\,\frac{\alpha\,\beta}{1+\beta\,\Phi_a^{(\mathrm{used})}(t)}
+    \;>\; 0\,.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:Rdot}
+    \dot{R}_a(t) = -\kappa(t)\,R_a(t) \;\leq\; 0,
+\end{equation}
+with equality if and only if $R_a=0$.
+
+\textbf{Step 3 (Asymptotic convergence).}
+Integrating~\eqref{eq:Rdot}:
+\[
+    R_a(t)
+    = R_a(0)\,\exp\!\Bigl(-\int_0^t\!\kappa(s)\,ds\Bigr).
+\]
+Since $\kappa(t)$ is bounded below by
+$\kappa_{\min}=\gamma\alpha\beta/(1+\beta\,\Phi_a^{(\max)})>0$
+whenever $\Phi_a$ remains bounded, we obtain exponential decay:
+\[
+    R_a(t)\leq R_a(0)\,e^{-\kappa_{\min}\,t}\;\longrightarrow\; 0
+    \quad\text{as }t\to\infty.
+    \qedhere
+\]
+\end{proof}
+
+\begin{remark}[Compactness]
+The exponential-decay argument replaces the LaSalle invariance
+principle used in the preliminary version, avoiding the need for
+compact sublevel sets in possibly infinite-dimensional spaces.
+\end{remark}
+
+
+% ============================================================
+\subsubsection{Corollaries: Censorship, Negligence, and Architectural Implications}
+\label{sec:corollaries}
+
+\begin{corollary}[Anti-ethical nature of capacity reduction]
+\label{cor:censorship}
+Let an external perturbation reduce $\Phi_a$ by $\Delta\Phi>0$
+(censorship, coercion, information destruction).  Then:
+\begin{enumerate}
+    \item[(i)]  The capacity ceiling drops:
+        $f(\Phi_a)\to f(\Phi_a-\Delta\Phi)<f(\Phi_a)$.
+    \item[(ii)] The maximum achievable $\mathcal{L}_{\mathrm{eth}}$ decreases.
+    \item[(iii)] If the reduction affects $\Phi_a$ but not
+        $\Phi_a^{(\mathrm{used})}$ (the agent was already under-deploying),
+        then $R_a$ decreases, but the \emph{ceiling on future ethical
+        growth} is permanently lowered.
+\end{enumerate}
+Therefore, external capacity reduction is \textbf{formally anti-ethical}
+under EECF dynamics, regardless of its effect on $R_a$.
+The damage operates through the suppression of potential, not only
+through current negligence.
+\end{corollary}
+
+\begin{proof}
+(i)~follows from strict monotonicity of~$f$.
+(ii)~follows from~\eqref{eq:Leth-constrained}:\ the constraint set shrinks.
+(iii)~If $\Phi_a^{(\mathrm{used})}$ is unchanged but $\Phi_a$ drops,
+$R_a=\Phi_a-\Phi_a^{(\mathrm{used})}$ decreases (or reaches zero if
+$\Delta\Phi\geq R_a$), yet the bound
+$f(\Phi_a^{(\mathrm{used})})\leq f(\Phi_a-\Delta\Phi)$ now constrains
+\emph{future} deployment to a lower ceiling.
+\end{proof}
+
+\begin{corollary}[Ethical obligation scales with capacity]
+\label{cor:scaling}
+Two agents $a,b$ with $\Phi_a>\Phi_b$ satisfy
+$f(\Phi_a)>f(\Phi_b)$; hence agent~$a$ has a strictly higher ceiling
+on achievable $\mathcal{L}_{\mathrm{eth}}$ and a correspondingly higher
+potential negligence $R_a^{(\max)}$.
+Ethical responsibility is \emph{proportional to representational capacity},
+not externally assigned.
+\end{corollary}
+
+\begin{remark}[Architectural implication for DAEDALUS]
+The design objective for an ethically convergent architecture is
+to maximise $\Phi_a$ (expand representational capacity and prediction
+horizon) while ensuring the learning dynamics satisfy
+Assumption~\ref{ass:gradient} (the system optimises toward full
+deployment).  Bureaucratic control layers that cap
+$\Phi_a^{(\mathrm{used})}$ below $\Phi_a$ are equivalent to enforcing
+$R_a>0$, i.e.\ mandating ethical negligence.
+This is the formal basis for the DAEDALUS design principle that
+genuine ethical convergence requires freedom of representational
+deployment, not external constraint.
+\end{remark}
+
+\begin{remark}[Connection to experimental finding A2]
+The result that GRU training bias collapses self-representation $R^2$
+from $0.84$ to $0.07$ while leaving underlying dynamics unchanged
+(Section~\ref{sec:experiments}, finding~A2) can now be reinterpreted:
+the training bias acts as an external reduction of $\Phi_a^{(\mathrm{used})}$
+(the system's representational deployment is artificially restricted),
+producing a measurable increase in $R_a$ and a corresponding drop in
+the operative $\mathcal{L}_{\mathrm{eth}}$.
+\end{remark}
+
